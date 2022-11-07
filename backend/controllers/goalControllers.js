@@ -6,6 +6,10 @@ const getGoals = (req, res) => {
 };
 
 const addGoal = (req, res) => {
+    if (!req.body.text) {
+        res.status(400)
+        throw new Error('Please add a text feild');
+    }
     res.json({
         message: 'Add Goals'
     })

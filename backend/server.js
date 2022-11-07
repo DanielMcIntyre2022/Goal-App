@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const DB = require('./config/db')
+const {errorHandler} = require('./middleware/errorMiddleware');
 const port = process.env.PORT
 
 DB();
@@ -12,5 +13,7 @@ app.use(express.urlencoded({
 }));
 
 app.use('/api/goals', require('./routes/goalRoutes'));
+
+app.use(errorHandler);
 
 app.listen(port, console.log('listening on localhost 3023'));
