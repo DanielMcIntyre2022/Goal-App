@@ -1,11 +1,12 @@
+const aysncHandler = require('express-async-handler');
 
-const getGoals = (req, res) => {
+const getGoals = aysncHandler(async (req, res) => {
     res.json({
         message: 'Get Goals'
     })
-};
+});
 
-const addGoal = (req, res) => {
+const addGoal = aysncHandler(async (req, res) => {
     if (!req.body.text) {
         res.status(400)
         throw new Error('Please add a text feild');
@@ -13,19 +14,19 @@ const addGoal = (req, res) => {
     res.json({
         message: 'Add Goals'
     })
-};
+});
 
-const updateGoal = (req, res) => {
+const updateGoal = aysncHandler(async (req, res) => {
     res.json({
         message: `Update goal ${req.params.id}`
     })
-};
+});
 
-const deleteGoal = (req, res) => {
+const deleteGoal = aysncHandler(async (req, res) => {
     res.json({
         message: `Delete goal ${req.params.id}`
     })
-}
+});
 
 module.exports = {
     getGoals,
