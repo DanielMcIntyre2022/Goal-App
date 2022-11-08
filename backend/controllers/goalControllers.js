@@ -4,6 +4,7 @@ const Goal = require('../models/goalsModel');
 
 const getGoals = aysncHandler(async (req, res) => {
     const goals = await Goal.find({
+        user: req.user.id
     })
     res.json({
        goals
@@ -16,7 +17,8 @@ const addGoal = aysncHandler(async (req, res) => {
         throw new Error('Please add a text feild');
     }
     const goal = await Goal.create({
-        text: req.body.text
+        text: req.body.text,
+        user: req.user.id
     })
     res.json({
         goal
