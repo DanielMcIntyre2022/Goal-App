@@ -17,4 +17,4 @@ app.use('/api/users', require('./routes/userRoutes'));
 
 app.use(errorHandler);
 
-app.listen(port, console.log('listening on localhost 3023'));
+app.listen(port, console.log('listening on localhost 3024'));
